@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,19 +9,641 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.joyrasmussen.myapplication.MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    tools:context="com.example.joyrasmussen.myapplication.MainActivity"
+    >
 
     <Button
-        android:text="Button"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/button"
-        android:onClick="buttonListener"/>
+        android:text="@string/search"
+        android:onClick="buttonListener" />
+
+    <TextView
+        android:id="@+id/searchLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/searchLabel"
+        android:textSize="16sp"
+        android:textStyle="normal|bold" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/searchLabel"
+        android:fillViewport="true"
+        android:isScrollContainer="false">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/row1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:orientation="horizontal"
+                android:tag="1">
+
+                <EditText
+                    android:id="@+id/word1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="1"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row1"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="2"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row2"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="3"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row3"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="4"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row4"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="5"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row5"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="6"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row6"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="7"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row7"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="8"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row8"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word9"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab9"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="9"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row9"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="10"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row10"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word11"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab11"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="11"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row11"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="12"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row12"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word13"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab13"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="13"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row13"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="14"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row14"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word15"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab15"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="15"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row15"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word16"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab16"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="16"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row16"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word17"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab17"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="17"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row17"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word18"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab18"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="18"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row18"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word19"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab19"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="19"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row19"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/word20"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:ems="10"
+                    android:inputType="text"></EditText>
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab20"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.07"
+                    android:clickable="true"
+                    android:onClick="fabClick"
+                    android:tag="20"
+                    app:fabSize="mini"
+                    app:srcCompat="@android:drawable/ic_menu_add" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/caseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scrollView"
+        android:text="@string/matchCase"
+        android:textSize="16sp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/caseTextView"
+        android:layout_toRightOf="@id/caseTextView"
+        android:id="@+id/checkBox" />
+
 </RelativeLayout>

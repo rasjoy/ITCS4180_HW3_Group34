@@ -2,4 +2,10 @@
     <string name="app_name">Word Counter</string>
     <string name="frequency">Word Frequency:</string>
     <string name="finishText">Finish</string>
+    <string name="searchLabel">Add words to search:</string>
+    <string name="matchCase">Match case: </string>
+    <string name="search">Search</string>
+
+    <item type="id" name="number"/>
+    <item type="id" name="status"/>
 </resources>
