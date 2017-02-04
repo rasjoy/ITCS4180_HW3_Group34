@@ -9,5 +9,11 @@ public class Words extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_words);
+
+        //getting screen size so that we can dynamically set the size of the scroll view.
+
+
+
+
     }
 }

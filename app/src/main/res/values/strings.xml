@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Word Counter</string>
+    <string name="frequency">Word Frequency:</string>
+    <string name="finishText">Finish</string>
 </resources>
