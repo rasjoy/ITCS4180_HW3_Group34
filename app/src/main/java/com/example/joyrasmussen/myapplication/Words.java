@@ -27,12 +27,12 @@ public class Words extends AppCompatActivity {
         ScrollView scrollView = (ScrollView) findViewById(R.id.wordScroll);
         LinearLayout layout = (LinearLayout) findViewById(R.id.layoutWord);
 
-       // wordLists = (ArrayList<String>)getIntent().getSerializableExtra("WORDS");
-        wordLists = new ArrayList<String>();
+        wordLists = (ArrayList<String>)getIntent().getSerializableExtra(MainActivity.COUNTER);
+        /*wordLists = new ArrayList<String>();
         for(int i = 0; i < 10; i++){
             wordLists.add("Words: " + i);
 
-        }
+        }*/
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100);
 
 

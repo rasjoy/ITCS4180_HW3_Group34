@@ -1,6 +1,9 @@
 package com.example.joyrasmussen.myapplication;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,8 +15,13 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +38,15 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<LinearLayout> rows;
 
     ArrayList<String> words; //Search terms
+    ArrayList<String> textsForViews;
 
+    ProgressDialog progressDialog;
+
+    boolean matchCase;
+    final static String COUNTER = "COUNTER";
+
+    final static String INPUT_FILE = "textfile.txt";
+    ArrayList<String> allwords;
 
     public void fabClick(View view) {
 
@@ -65,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         for (int i = index; i < 19; i++) {
             editTexts.get(i).setText(editTexts.get(i + 1).getText());
 
-
         }
 
         for (int j = 19; j >= 0; j--) {
@@ -78,8 +93,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-
-
     }
 
     @Override
@@ -89,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
 
         createAndHideRows();
         words = new ArrayList<String>();
+
+        textsForViews = new ArrayList<String>();
+        readInFile();
+
     }
 
 
@@ -96,9 +113,11 @@ public class MainActivity extends AppCompatActivity {
 
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox);
 
-        boolean matchCase = checkBox.isChecked(); //match case or not? True or false.
+        matchCase = checkBox.isChecked(); //match case or not? True or false.
 
         words.clear(); //In case the user returns after finishing the 2nd activity
+
+        textsForViews.clear();
 
         for(EditText e : editTexts){
             String word = e.getText().toString();
@@ -110,9 +129,19 @@ public class MainActivity extends AppCompatActivity {
 
         //words = the ArrayList of search terms
         //matchCase = boolean for matching case
+        progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog.setMessage("");
+        progressDialog.setCancelable(false);
+        progressDialog.setMax(words.size());
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDialog.show();
 
-        Intent i = new Intent("com.example.joyrasmussen.myapplication.intent.action.WORDS");
-        startActivity(i);
+        for(String word: words){
+              new  WordCounter().execute(word);
+        }
+
+
+
 
     }
 
@@ -206,5 +235,97 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    public void readInFile(){
+
+
+        InputStream in = null;
+        allwords = new ArrayList<String>();
+        try {
+            in = getAssets().open(INPUT_FILE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
+        try{
+            String line;
+            while((line = reader.readLine()) != null){
+                allwords.addAll(Arrays.asList(line.split("(?=[,.:;])|\\s")));
+
+            }
+
+        }catch (IOException e){
+            e.printStackTrace();
+
+        }
+        try {
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+    public class WordCounter extends AsyncTask<String, Void, Void> {
+
+
+
+        public WordCounter(){
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            progressDialog.setProgress(progressDialog.getProgress() + 1);
+            if(progressDialog.getProgress() == progressDialog.getMax()){
+                progressDialog.dismiss();
+                Intent i = new Intent("com.example.joyrasmussen.myapplication.intent.action.WORDS");
+                i.putExtra(COUNTER,textsForViews );
+                startActivity(i);
+
+            }
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+
+        @Override
+        protected Void doInBackground(String... params) {
+            if(matchCase){
+                int count = Collections.frequency(allwords, params[0]);
+                textsForViews.add(params[0] + ":  " + count);
+            }else{
+                int count = 0;
+                for(String word: allwords){
+                    if(word.equalsIgnoreCase(params[0])){
+                        count++;
+                    }
+                }
+                textsForViews.add(params[0] + ":  " + count);
+            }
+            return null;
+
+
+        }
+    }
+
+
 }
 
