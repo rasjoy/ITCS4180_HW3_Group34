@@ -1,4 +1,11 @@
 package com.example.joyrasmussen.myapplication;
+/**
+ *Homework 3
+ * MainActivity.java
+ *Group 34
+ * Joy Rasmussen and Robert Holt
+ *
+ */
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -126,23 +133,22 @@ public class MainActivity extends AppCompatActivity {
                 words.add(word);
             }
         }
-
-        //words = the ArrayList of search terms
-        //matchCase = boolean for matching case
-        progressDialog = new ProgressDialog(MainActivity.this);
-        progressDialog.setMessage("");
-        progressDialog.setCancelable(false);
-        progressDialog.setMax(words.size());
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progressDialog.show();
-
-        for(String word: words){
-              new  WordCounter().execute(word);
+        if(words.size() == 0) {
+            Toast.makeText(this, "Please provide at least one word to search", Toast.LENGTH_LONG).show();
+            return;
         }
+            //words = the ArrayList of search terms
+            //matchCase = boolean for matching case
+            progressDialog = new ProgressDialog(MainActivity.this);
+            progressDialog.setMessage("Calculating Frequency!");
+            progressDialog.setCancelable(false);
+            progressDialog.setMax(words.size());
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            progressDialog.show();
 
-
-
-
+            for (String word : words) {
+                new WordCounter().execute(word);
+            }
     }
 
     public void createAndHideRows() {
